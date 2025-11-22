@@ -131,6 +131,19 @@ export ADMIN_ID="YOUR_TG_ACCOUNT_ID"
 export ALLOW_DOWNLOAD="1"
 ```
 
+**Launching via Docker**
+```
+docker build -t tpmb .
+docker run -d \
+  --name tpmb \
+  -e BOT_TOKEN="YOUR_BOT_TOKEN_HERE" \
+  -e ADMIN_ID="YOUR_TG_ACCOUNT_ID" \
+  -e DB_PATH="bot.db" \
+  -e ALLOW_DOWNLOAD="1" \
+  tpmb
+docker exec -it tpmb python manual_reply_async.py # (Optional) Manually sending messages
+```
+
 **Launch**
 
 In tpmb folder:
