@@ -124,6 +124,7 @@ These values are in the files:
 ```
 git clone https://github.com/47solar/tpmb.git
 cd tpmb
+pip install -r requirements.txt
 source venv/bin/activate
 export BOT_TOKEN="YOUR_BOT_TOKEN_HERE"
 export ADMIN_ID="YOUR_TG_ACCOUNT_ID"
