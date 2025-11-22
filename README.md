@@ -15,7 +15,9 @@ It supports forwarding messages and files, maintaining a database, blocking user
 
 The administrator fully controls the bot:
 Viewing incoming messages
+
 ```/inbox```
+
 Shows the last 30 messages indicating:
 * message ID
 * user's alias
@@ -25,30 +27,39 @@ Shows the last 30 messages indicating:
 Messages are automatically cut to avoid exceeding the Telegram limit.
 
 **Response to the user**
+
 ```/reply User#N response text...```
+
 Sends a text message back to the user.
 
 **Forwarding a file from the message archive to the user**
+
 ```/send User#N MESSAGE_ID```
+
 The bot will find the file by ID and forward it to the user.
 
 **Uploading the file to the server + checking with antivirus (ClamAV)**
+
 ```/fetch MESSAGE_ID```
+
 * Downloads the file to QUARANTINE_DIR
 * Performs verification via clamscan
 * Notifies the administrator of the result
   Requires the variable ALLOW_DOWNLOAD=1.
 
 **Blocking the user**
+
 ```/block User#N [reason]```
 
 **Blocking**
+
 ```/unblock User#N```
 
 **The database**
 SQLite is used (the file is bot.db or the path from the environment variable).
 
 The users table:
+
 ```
 id            internal ID
 chat_id       Telegram chat ID
@@ -57,6 +68,7 @@ first_start   is this the first launch
 ```
 
 The messages table:
+
 ```
 Saves:
 text
@@ -72,12 +84,17 @@ Used by the locking system.
 
 📁 **File upload restrictions**
 The bot accepts:
+
 ```photo, document, audio, voice, video, sticker```
+
 Allowed document extensions:
+
 ```.pdf .txt .md .jpg .jpeg .png .mp4 .mp3 .ogg .sql```
+
 Files that violate the policy are rejected.
 
 Environment variables
+
 ```
 BOT_TOKEN        Telegram bot token
 ADMIN_ID         Telegram ID of the administrator
@@ -104,21 +121,24 @@ These values are in the files:
 
 **INSTALLATION**
 
-**To launch the bot:**
-
 ```
-cd /path/to/script/folder/
+git clone https://github.com/47solar/tpmb.git
+cd tpmb
 source venv/bin/activate
 export BOT_TOKEN="YOUR_BOT_TOKEN_HERE"
 export ADMIN_ID="YOUR_TG_ACCOUNT_ID"
 export ALLOW_DOWNLOAD="1"
-python main.py
 ```
 
-In a separate terminal:
+**Launch**
+
+In tpmb folder:
+
+```python main.py```
+
+Separate terminal in tpmb folder:
 
 ```
-cd /path/to/script/folder/
 source venv/bin/activate
 python manual_reply.py
 ```
